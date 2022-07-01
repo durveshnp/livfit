@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'livfit/profile.css' %}"/>
+    <link rel="stylesheet" href="{% static 'livfit/nav2.css' %}"/>
+
+    <!------ Include the above in your HEAD tag ---------->
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/product/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+
+    <title>LivFit</title>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 20px 5% ">
+    <img src="{% static 'livfit/livFit.png' %}" alt="" width="50px">
+    <a class="navbar-brand" href="#">LivFit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'livfitprofile' %}">Home</a>
+            <a class="nav-item nav-link " href="{% url 'exercise' %}">Exercise</a>
+            <a class="nav-item nav-link " href="{% url 'food' %}">Food</a>
+            <a class="nav-item nav-link" href="https://durves3112.github.io/game/">Game</a>
+            <a class="nav-item nav-link" href="{% url 'team' %}">About Us</a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+</nav>
+<main role="main" class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}"> {{ message }} </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</main>
+<div id="c">
+    <div class="container-fluid">
+        <div class="courses-container">
+            <div class="course">
+                <div class="course-preview">
+                    <img style="width: 150px;border-radius: 50%"
+                         src="{% static 'livfit/profile_photo.png' %}" alt="">
+
+                    <p style="margin-top: 20px; text-align: center">Age: {{ user.profile.age }}</p>
+                </div>
+                <div class="course-info">
+                    <h2 style="font-size: 3rem; font-weight: bold">Hello {{ user.username }}!</h2>
+                    <h3>Height:
+                        <span>{{ user.profile.height }} cm</span>
+                    </h3>
+                    <h3 id="wgt">Weight:
+                        <span>{{ user.profile.weight }} kg</span>
+                    </h3>
+                    <a href="/profile-update/">
+                        <button class="btn2">Edit</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <br/>
+        </div>
+        <div class="row text-center">
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-coffee fa-2x"></i>
+                    <h2 class="timer count-title count-number" data-to="{{ total_food }}" data-speed="1500"></h2>
+                    <p class="count-text ">Calories gained</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <i class="fa fa-bicycle fa-2x"></i>
+                    <h2 class="timer count-title count-number" data-to="{{ total_exercise }}" data-speed="1500"></h2>
+                    <p class="count-text ">Calories burned</p>
+                </div>
+            </div>
+            <div class="col flip-card">
+                <div class="counter flip-card-inner ">
+                    <div class="flip-card-front">
+                        <i class="fa fa-user-circle fa-2x"></i>
+                        <h2 class="timer count-title count-number" data-to="{{ user_bmi }}" data-speed="1500"></h2>
+                        <p class="count-text ">BMI</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Body mass Index</h4>
+                        {% if user_bmi < 18.5 %}
+                            <h5>You are Underweight</h5>
+                        {% elif user_bmi < 25 %}
+                            <h5>You are Normal Weight</h5>
+                        {% elif user_bmi < 30 %}
+                            <h5>You are Overweight</h5>
+                        {% else %}
+                            <h5>You are Obese</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col flip-card">
+                <div class="counter flip-card-inner ">
+                    <div class="flip-card-front">
+                        <i class="fa fa-user-circle fa-2x"></i>
+                        <h2 class="timer count-title count-number" data-to="{{ user_bmr }}" data-speed="1500"></h2>
+                        <p class="count-text ">BMR</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Basal Metabolic Rate</h4>
+                            <h5>Amount of energy expected</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container2">
+
+    <img
+            src="http://thenelsondaily.com/sites/default/files/newsimages/thenelsondailycom/dec/canada_food_guide.png"
+            alt="image">
+    <div class="container-text">
+        <h1>Food</h1>
+        <h2>You have gained
+            <span>0</span> calories today
+        </h2>
+        <p>Write down the type of food and drink.<br><i>Example: "I ate Biryani"</i></p>
+        <div class="input div-inline">
+            <form id="food" action="{% url 'add-food' %}" method="post">
+                {% csrf_token %}
+                <input type="text" id="output1" class="form-control" name='food_text' placeholder="Add Food"
+                       aria-label="Username"
+                       aria-describedby="basic-addon1">
+
+                {#                <input type="text" id="output" name='exercise_text' placeholder="Add what exercise you did or Tap on mic..."/>#}
+            </form>
+            <button style="position: relative;left: -50px;" type="button" class="btn btn-outline-dark"
+                    onclick="runSpeechRecognition1()">Speak
+            </button>
+            &nbsp;<span id="action1"></span>
+        </div>
+        <script>
+            function runSpeechRecognition1() {
+                // get output div reference
+                var output = document.getElementById("output1");
+                // get action element reference
+                var action = document.getElementById("action1");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function (event) {
+                    var transcript = event.results[0][0].transcript;
+
+                    output.value = transcript;
+                    output.classList.remove("hide");
+                    document.getElementById('food').submit()
+                };
+
+                // start recognition
+                recognition.start();
+            }
+        </script>
+        <br><br>
+        <a href="{% url 'food' %}">
+            <button class="btn2">Food Chart</button>
+        </a>
+    </div>
+</div>
+<div class="container3"></div>
+<br>
+<div class="container2">
+
+    <img
+            src="https://images.everydayhealth.com/images/how-to-start-working-out-again-derailed-from-covid-1440x810.jpg"
+            alt="image">
+    <div class="container-text">
+        <h1>Exercise</h1>
+        <h2>You have lose
+            <span>0</span> calories today
+        </h2>
+        <p>Write down the type of Exercise.<br><i>Example: "I ran 5km"</i></p>
+        <div class="input div-inline">
+            <form id="exercise" action="{% url 'add-exercise' %}" method="post">
+                {% csrf_token %}
+                <input type="text" id="output2" class="form-control" name='exercise_text' placeholder="Add Exercise"
+                       aria-label="Username"
+                       aria-describedby="basic-addon1">
+
+            </form>
+            <button style="position: relative;left: -50px;" type="button" class="btn btn-outline-dark"
+                    onclick="runSpeechRecognition()">Speak
+            </button>
+            &nbsp;<span id="action2"></span>
+            <script>
+                function runSpeechRecognition() {
+                    // get output div reference
+                    var output = document.getElementById("output2");
+                    // get action element reference
+                    var action = document.getElementById("action2");
+                    // new speech recognition object
+                    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                    var recognition = new SpeechRecognition();
+
+                    // This runs when the speech recognition service returns result
+                    recognition.onresult = function (event) {
+                        var transcript = event.results[0][0].transcript;
+
+                        output.value = transcript;
+                        output.classList.remove("hide");
+                        document.getElementById('exercise').submit()
+                    };
+
+                    // start recognition
+                    recognition.start();
+                }
+            </script>
+        </div>
+        <br><br>
+        <a href="{% url 'exercise' %}">
+            <button class="btn2">Exercise Chart</button>
+        </a>
+    </div>
+</div>
+<br><br><br>
+</div>
+<div class="container4"></div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="{% static 'livfit/profile.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<footer
+style="background-image: linear-gradient(to bottom right, #003747, #000); padding:10px 0;">
+
+    <a class="nav-link active" href="/exercise/" style="text-align:center;color: #fff;">© Team WCE Bazooka '22</a>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'livfit/nav2.css' %}">
+    <link rel="stylesheet" href="{% static 'livfit/team.css' %}">
+    <title>Our Team</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 20px 5% ">
+    <img src="{% static 'livfit/livFit.png' %}" alt="" width="50px">
+    <a class="navbar-brand" href="#">LivFit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link " href="{% url 'livfitprofile' %}">Home</a>
+            <a class="nav-item nav-link " href="{% url 'exercise' %}">Exercise</a>
+            <a class="nav-item nav-link " href="{% url 'food' %}">Food</a>
+            <a class="nav-item nav-link" href="https://durves3112.github.io/game/">Game</a>
+            <a class="nav-item nav-link active" href="{% url 'team' %}">About Us</a>
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+        </div>
+    </div>
+</nav>
+<main role="main" class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}"> {{ message }} </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</main>
+<div class="container">
+    <div class="row blog">
+        <div class="problem" style="text-align: center">
+            <h1 class="center mx-auto text-center py-4">Our Problem Statement</h1>
+            <p class="para">
+                The human body needs calories to survive. Without energy, the cells in the body would die, the heart and
+                lungs
+                would
+                stop, and the organs would not be able to carry out the basic processes needed for living. People absorb
+                this
+                energy
+                from food and drink.
+
+                If people consumed only the number of calories needed every day, they would probably have healthy lives.
+                Calorie
+                consumption that is too low or too high will eventually lead to health problems.
+
+                The number of calories in food tells us how much potential energy they contain. It is not only calories
+                that
+                are
+                important, but also the substance from which the calories are taken.
+                So, our team The
+                <b>WCE_Bazooka</b> came up with an web-app called
+                <b>LIVFIT</b> with a goal to use Simple and Minimalistic approach
+                to keep track of your daily meal consumption as well as workout done
+                by you.
+            </p>
+            <p class="para">
+                We designed an app where user will just have to speak out what
+                he/she had eaten or what exercise had done. We analyse the audio
+                message given by the user to find out how much calories are taken or
+                burned by user. We maintained two separate tables for daily food
+                consumption and exercise done by user. Proper message should be
+                shown on profile wheather you have taken more calories or less than
+                the requirement. Proper pie-charts below the tables, show the
+                distribution of calories consumed by user according to different
+                food types.
+            </p>
+            <br/><br/><br/>
+        </div>
+        <hr>
+
+        <h1 class="center mx-auto text-center py-4">Meet Our Team Members</h1>
+
+        <h2>WCE_Bazooka</h2>
+
+        <div class="col-md-12">
+            <div id="blogCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="invisible carousel-indicators">
+                    <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#blogCarousel" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="our-team">
+                                    <div class="pic">
+                                        <img src="{% static 'livfit/profile/satyam.jpg' %}"/>
+                                    </div>
+                                    <div class="team-content">
+                                        <h3 class="title">Satyam Baldawa</h3>
+                                        <span class="post">T.Y. B.Tech. (ELN)</span>
+                                        <span class="post">Walchand College of Engineering, Sangli</span>
+                                    </div>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/satyam-baldawa-1a3478193/"
+                                               class="fa fa-linkedin"
+                                               target="_blank"></a>
+                                        </li>
+                                        <li>
+                                            <a href="mailto:baldawasatyam30@gmail.com" class="fa fa-envelope"
+                                               target="_blank"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="our-team">
+                                    <div class="pic">
+                                        <img src="{% static 'livfit/profile/shreya.jpg' %}"/>
+                                    </div>
+                                    <div class="team-content">
+                                        <h3 class="title">Shreya Kothawale</h3>
+                                        <span class="post">T.Y. B.Tech. (ELN)</span>
+                                        <span class="post">Walchand College of Engineering, Sangli</span>
+                                    </div>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/shreya-kothawale-334a381a8/"
+                                               target="_blank"
+                                               class="fa fa-linkedin"></a>
+                                        </li>
+                                        <li>
+                                            <a href="mailto:skothawale79@gmail.com" target="_blank"
+                                               class="fa fa-envelope fa-2x"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="our-team">
+                                    <div class="pic">
+                                        <img src="{% static 'livfit/profile/durvesh.jpeg' %}"/>
+                                    </div>
+                                    <div class="team-content">
+                                        <h3 class="title">Durvesh Patil</h3>
+                                        <span class="post">T.Y. B.Tech. (ELN)</span>
+                                        <span class="post">Walchand College of Engineering, Sangli</span>
+                                    </div>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/patildurvesh/" target="_blank"
+                                               class="fa fa-linkedin"></a>
+                                        </li>
+                                        <li>
+                                            <a href="mailto:durveshnp@gmail.com" target="_blank"
+                                               class="fa fa-envelope fa-2x"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="our-team">
+                                    <div class="pic">
+                                        <img src="{% static 'livfit/profile/aditya.jpg' %}"/>
+                                    </div>
+                                    <div class="team-content">
+                                        <h3 class="title">Aditya Gaikwad</h3>
+                                        <span class="post">T.Y. B.Tech. (ELN)</span>
+                                        <span class="post">Walchand College of Engineering, Sangli</span>
+                                    </div>
+                                    <ul class="social">
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/aditya-gaikwad-156253195/"
+                                               target="_blank"
+                                               class="fa fa-linkedin"></a>
+                                        </li>
+                                        <li>
+                                            <a href="mailto:aditya112gaikwad@gmail.com" target="_blank"
+                                               class="fa fa-envelope fa-2x"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer style="background-image: linear-gradient(to bottom right, #003747, #000); padding:10px 0;margin-top: 50px">
+    <a class="nav-link active" href="{% url 'livfithome' %}" style="text-align:center;color: #fff;">© Team WCE Bazooka
+        '22</a>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

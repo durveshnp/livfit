@@ -1,0 +1,53 @@
+
+body{
+  background-color: #00181f;
+}
+nav{
+    background-image: linear-gradient(to bottom right, #003747, #000);
+    padding: 10px 0;
+    margin-bottom: 70px;
+}
+.card-img-top{
+    align-self: center;
+    width:100px;
+}
+
+.btn-primary{
+  background-color: #003747;
+  border-color: #003747;
+}
+.ok{
+      background: linear-gradient(#00181f, transparent), url("https://cdn.shopify.com/s/files/1/1647/4455/files/HealthyEating.jpg?v=1554821180") no-repeat center; 
+
+        height: 500px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;   
+}
+.right {
+     margin-left: 0 !important;
+}
+  @media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+      display: -ms-flexbox!important;
+      display: flex!important;
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+      flex-direction: row-reverse;
+  }
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+  }

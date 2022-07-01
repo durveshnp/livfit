@@ -1,0 +1,25 @@
+{% extends "livfit/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method ="POST">   <!-- method post -->
+            {% csrf_token %}   <!-- This csrf_token is required for django/ adds security -->
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Update Profile</legend>
+                {{ m_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <br>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>   <!-- type submit -->
+            </div>
+        </form>
+        <br>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Dont have an Account? <a class="ml-2" href="{% url 'login' %}">Sign in</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}

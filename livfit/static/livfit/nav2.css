@@ -1,0 +1,29 @@
+
+nav{
+    background-image: linear-gradient(to bottom right, #003747, #000);
+    padding: 10px 0;
+    margin-bottom: 70px;
+}
+  @media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+      display: -ms-flexbox!important;
+      display: flex!important;
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+      flex-direction: row-reverse;
+  }
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+  }

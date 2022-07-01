@@ -1,0 +1,10 @@
+{% extends "livfit/base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form action="{% url 'add-exercise' %}" method="post">
+        {% csrf_token %}
+        <input type="text" id="1" name='exercise_text' placeholder="What exercise you did today"/>
+        <button type="submit" class="submit-btn" id="2">Submit</button>
+    </form>
+{% endblock %}
